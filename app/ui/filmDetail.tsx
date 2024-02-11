@@ -17,9 +17,11 @@ export default async function FilmDetails({
     <div className='text-md font-light'>
       <h2 className='pt-5 text-lg font-medium leading-loose'>Film Details</h2>
       <section className='pt-5'>
-        {filmHeaders.map((item) => (
-          <p key={item.key}>{`${item.label}: ${results[item.field]}`}</p>
-        ))}
+        {filmHeaders.map((item) => {
+          const keyAccess = item.field as keyof Film;
+          const value = results ? results[keyAccess] : '-';
+          return <p key={item.key}>{`${item.label}: ${value}`}</p>;
+        })}
       </section>
       <ExpandableHeading
         title='Characters'

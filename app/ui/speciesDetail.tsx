@@ -17,9 +17,11 @@ export default async function SpeciesDetails({
         Species Details
       </h2>
       <section className='pt-5'>
-        {speciesHeaders.map((item) => (
-          <p key={item.key}>{`${item.label}: ${results[item.field]}`}</p>
-        ))}
+        {speciesHeaders.map((item) => {
+          const keyAccess = item.field as keyof Species;
+          const value = results ? results[keyAccess] : '-';
+          return <p key={item.key}>{`${item.label}: ${value}`}</p>;
+        })}
       </section>
       <ExpandableHeading
         title='Films'

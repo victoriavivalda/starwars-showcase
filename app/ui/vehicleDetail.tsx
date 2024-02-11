@@ -17,9 +17,11 @@ export default async function VehicleDetails({
         Vehicle Details
       </h2>
       <section className='pt-5'>
-        {vehicleHeaders.map((item) => (
-          <p key={item.key}>{`${item.label}: ${results[item.field]}`}</p>
-        ))}
+        {vehicleHeaders.map((item) => {
+          const keyAccess = item.field as keyof Vehicle;
+          const value = results ? results[keyAccess] : '-';
+          return <p key={item.key}>{`${item.label}: ${value}`}</p>;
+        })}
       </section>
       <ExpandableHeading
         title='Pilots'

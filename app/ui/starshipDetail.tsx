@@ -17,9 +17,11 @@ export default async function StarshipDetails({
         Starship Details
       </h2>
       <section className='pt-5'>
-        {starshipHeaders.map((item) => (
-          <p key={item.key}>{`${item.label}: ${results[item.field]}`}</p>
-        ))}
+        {starshipHeaders.map((item) => {
+          const keyAccess = item.field as keyof Starship;
+          const value = results ? results[keyAccess] : '-';
+          return <p key={item.key}>{`${item.label}: ${value}`}</p>;
+        })}
       </section>
       <ExpandableHeading
         title='Pilots'

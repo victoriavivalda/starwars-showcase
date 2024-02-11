@@ -7,6 +7,6 @@ import { saveVisitedResource } from '../lib/localStorage';
 export default function TrackView(lsViewedPerson: MostVisitedItems) {
   useEffect(() => {
     saveVisitedResource(lsViewedPerson);
-  }, []);
+  }, [lsViewedPerson]);
   return null;
 }

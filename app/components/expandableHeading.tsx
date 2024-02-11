@@ -6,7 +6,7 @@ export default function ExpandableHeading({
   fieldsToDisplay,
 }: {
   title: string;
-  data: Array<unknown>;
+  data: Array<string>;
   fieldsToDisplay: Array<DisplayItem>;
 }) {
   if (data.length === 0) return null;
@@ -25,7 +25,7 @@ export default function ExpandableHeading({
                   key={i}
                   className='p-5 shadow-lg border-4 border-solid border-yellow-500 rounded-md'>
                   {fieldsToDisplay.map((display: DisplayItem) => {
-                    const field = display.field;
+                    const field = display.field as keyof string;
                     return (
                       <div
                         key={

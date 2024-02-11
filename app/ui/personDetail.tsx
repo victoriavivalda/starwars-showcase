@@ -19,9 +19,11 @@ export default async function PersonDetails({
         Character Details
       </h2>
       <section className='pt-5'>
-        {peopleHeaders.map((item) => (
-          <p key={item.key}>{`${item.label}: ${results[item.field]}`}</p>
-        ))}
+        {peopleHeaders.map((item) => {
+          const keyAccess = item.field as keyof Person;
+          const value = results ? results[keyAccess] : '-';
+          return <p key={item.key}>{`${item.label}: ${value}`}</p>;
+        })}
       </section>
       <ExpandableHeading
         title='Films'
