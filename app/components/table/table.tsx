@@ -9,7 +9,7 @@ export default function Table({
 }: TableStructureResource) {
   return (
     <div className='flex items-center justify-center'>
-      <table className='table-fixed w-full text-sm border-separate border-spacing-y-2'>
+      <table className='table-auto md:table-fixed overflow-auto md:overflow-visible w-screen md:w-full text-xs md:text-sm break-word text-balance border-separate border-spacing-y-2'>
         <thead className=''>
           <tr className='px-4 py-3 text-gray-200 bg-gray-900 first:rounded-tl-lg first:rounded-bl-lg last:rounded-tr-lg last:rounded-br-lg'>
             {headers.map(({ label, field }) => (
