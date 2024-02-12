@@ -87,7 +87,7 @@ export async function fetchStarship(id: number) {
   return starship;
 }
 
-export async function fetchSWApi(
+async function fetchSWApi(
   resource: SWAPIResource,
   queryParams: APIFetchParams
 ) {
@@ -113,7 +113,7 @@ function composeQuery({ search, page }: APIFetchParams) {
   return query;
 }
 
-export async function fetchSWApiById(resource: SWAPIResource, id: number) {
+async function fetchSWApiById(resource: SWAPIResource, id: number) {
   const BASE_SW_API = 'https://swapi.dev/api/';
   try {
     const response = await fetch(`${BASE_SW_API}/${resource}/${id}`);
@@ -124,9 +124,8 @@ export async function fetchSWApiById(resource: SWAPIResource, id: number) {
   }
 }
 
-export async function fetchSWApiByUrl(url: string) {
+async function fetchSWApiByUrl(url: string) {
   try {
-    if (!url) return;
     const response = await fetch(url);
     return await response.json();
   } catch (e) {
@@ -136,8 +135,9 @@ export async function fetchSWApiByUrl(url: string) {
 }
 
 function fetchThroughUrls(urls: Array<string>) {
+  if (!urls) return [];
   return Promise.all(
-    urls?.map((url) => {
+    urls.map((url) => {
       return fetchSWApiByUrl(url);
     })
   );
