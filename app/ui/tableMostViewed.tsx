@@ -4,6 +4,8 @@ import {
   TableStructureMostViewed,
 } from '@/app/lib/definitions';
 import Link from 'next/link';
+import TableRowNoData from '../components/table/tableRowNoData';
+import TableHeaderRow from '../components/table/tableHeaderRow';
 
 export default function TableMostViewed({
   headers,
@@ -16,7 +18,7 @@ export default function TableMostViewed({
       <div className='flex'>
         <table className='table-fixed w-full text-sm border-separate border-spacing-y-2'>
           <thead className=''>
-            <TableHeadRow headers={headers} />
+            <TableHeaderRow headers={headers} />
           </thead>
           <tbody>
             {data && data.length ? (
@@ -28,22 +30,12 @@ export default function TableMostViewed({
                 />
               ))
             ) : (
-              <TableBodyRowWithoutData />
+              <TableRowNoData />
             )}
           </tbody>
         </table>
       </div>
     </section>
-  );
-}
-
-function TableHeadRow({ headers }: { headers: TableHeaders[] }) {
-  return (
-    <tr className='px-4 py-3 text-gray-200 bg-gray-900 first:rounded-tl-lg first:rounded-bl-lg last:rounded-tr-lg last:rounded-br-lg'>
-      {headers.map(({ label, field }) => (
-        <th key={field}>{label}</th>
-      ))}
-    </tr>
   );
 }
 
@@ -75,16 +67,6 @@ function TableBodyRow({
             </td>
           );
         })}
-    </tr>
-  );
-}
-
-function TableBodyRowWithoutData() {
-  return (
-    <tr>
-      <td className='px-4 py-3 text-gray-900 bg-gray-200 font-medium text-center'>
-        Nothing to display yet
-      </td>
     </tr>
   );
 }

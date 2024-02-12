@@ -24,7 +24,7 @@ export default function Nav({}) {
     'underline underline-offset-4 md:underline-offset-8 decoration-yellow-600';
 
   return (
-    <nav className='flex-wrap text-xs sm:text-base flex items-center gap-x-1 md:gap-x-3'>
+    <nav className='flex-wrap text-xs sm:text-base flex items-center gap-1 md:gap-x-3'>
       {resources.map(({ key, label, href }) => (
         <Link
           key={key}
